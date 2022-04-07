@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
     });
 });
 
+db.query(`SELECT * FROM candidates`, (err, rows) => {
+    console.Console.og(rows);
+});
+
 //Default response for any other request (Not Found)
 app.use((req, res) => {
     res.status(404).end();
