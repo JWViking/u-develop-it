@@ -1,10 +1,24 @@
+const mysql = require('mysql2');
 const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-//express middleward
+//express middleware
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
+
+//Connect to MySQL database
+const db = mysql.createConnection(
+    {
+      host: 'localhost',
+      // Your MySQL username,
+      user: 'root',
+      // Your MySQL password
+      password: 'VikingKey',
+      database: 'election'
+    },
+    console.log('Connected to the election database.')
+  );
 
 //create a beginning route just to test the connection
 //root file at index level
